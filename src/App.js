@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 function App() {
@@ -7,16 +7,28 @@ function App() {
   
   const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
+  const [counter, setCounter] = useState(0);
   
+  //Runs every time page is rendered
+  useEffect(() => {
+    console.log('Effect has been run');
+  });
+  //we pass a second param [] it runs only once.
+
+
+
   return (
     <div className="App">
       <h1>Hello React</h1>
       <form className = "search-form">
-        <input type = "text" classname = "search-bar"></input>
-        <button type = "submit" classname = "search-button">Search</button>
+        <input type = "text" className = "search-bar"></input>
+        <button type = "submit" className = "search-button">
+          Search
+        </button>
       </form>
+      <h1 onClick={()=> setCounter(counter+1)}>{counter}</h1>
     </div>
-  );
+  ); 
 }
 
 export default App;
